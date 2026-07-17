@@ -1,3 +1,7 @@
+<!-- =========================================================
+PRODUCT CARD
+========================================================= -->
+
 <div class="product-card">
 
     <div class="product-image">
@@ -11,27 +15,27 @@
 
     <div class="product-info">
 
-        <h3>
+        <h3><%= product.title %></h3>
 
-            <%= product.title %>
+        <div class="product-rating">
 
-        </h3>
+            ⭐ <%= product.rating.rate %>
+            (<%= product.rating.count %> Reviews)
 
-        <p class="price">
+        </div>
+
+        <div class="product-price">
 
             $<%= product.price %>
 
-        </p>
-
-        <p class="rating">
-
-            ⭐ <%= product.rating.rate %>
-
-        </p>
+        </div>
 
         <button
             class="add-cart-btn"
             data-id="<%= product.id %>"
+            data-title="<%= product.title %>"
+            data-price="<%= product.price %>"
+            data-image="<%= product.image %>"
         >
 
             Add To Cart

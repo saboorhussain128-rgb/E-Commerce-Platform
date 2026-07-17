@@ -1,43 +1,43 @@
+<!-- =========================================================
+SHOPPING CART SIDEBAR
+========================================================= -->
+
 <aside class="cart-sidebar">
 
-    <h2>
+    <div class="cart-header">
 
-        Your Cart
+        <h2>Your Cart</h2>
 
-    </h2>
-
-    <div id="cartItems">
-
-        <p>
-
-            No items added yet.
-
-        </p>
+        <span id="cartCount" class="cart-count">0</span>
 
     </div>
 
-    <hr>
+    <div id="cartItems" class="cart-items">
 
-    <div class="subtotal">
+        <div class="empty-cart">
 
-        <h3>
+            <p>Your cart is empty.</p>
 
-            Subtotal
-
-        </h3>
-
-        <span id="subtotal">
-
-            $0.00
-
-        </span>
+        </div>
 
     </div>
 
-    <button id="checkoutBtn">
+    <div class="cart-footer">
 
-        Proceed Checkout
+        <div class="subtotal">
 
-    </button>
+            <span>Subtotal</span>
+
+            <strong id="subtotal">$0.00</strong>
+
+        </div>
+
+        <button id="checkoutBtn">
+
+            Proceed Checkout
+
+        </button>
+
+    </div>
 
 </aside>
