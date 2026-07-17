@@ -10,13 +10,13 @@ const router = express.Router();
 
 const productController = require("../controllers/productController");
 
-router.get(
+/*
+=========================================================
+PRODUCT API ROUTES
+=========================================================
+*/
 
-    "/",
-
-    productController.showHomePage
-
-);
+// Get All Products
 
 router.get(
 
