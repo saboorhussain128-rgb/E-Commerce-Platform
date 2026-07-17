@@ -1,33 +1,126 @@
+/*
+=========================================================
+E-COMMERCE PLATFORM
+Backend Entry Point
+=========================================================
+*/
+
+// =========================================================
+// LOAD ENVIRONMENT VARIABLES
+// =========================================================
+
 require("dotenv").config();
+
+// =========================================================
+// IMPORT PACKAGES
+// =========================================================
 
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const path = require("path");
+
+// =========================================================
+// IMPORT DATABASE
+// =========================================================
 
 const connectDB = require("./config/db");
 
+// =========================================================
+// IMPORT ROUTES
+// =========================================================
+
+const productRoutes = require("./routes/productRoutes");
+
+// =========================================================
+// CREATE EXPRESS APPLICATION
+// =========================================================
+
 const app = express();
 
-// Connect Database
+// =========================================================
+// CONNECT TO DATABASE
+// =========================================================
+
 connectDB();
 
-// Middleware
+// =========================================================
+// VIEW ENGINE CONFIGURATION
+// =========================================================
+
+app.set("view engine", "ejs");
+
+app.set(
+    "views",
+    path.join(__dirname, "../frontend/views")
+);
+
+// =========================================================
+// STATIC FILES
+// =========================================================
+
+app.use(
+    express.static(
+        path.join(__dirname, "../frontend/public")
+    )
+);
+
+// =========================================================
+// GLOBAL MIDDLEWARE
+// =========================================================
+
 app.use(cors());
+
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
+
 app.use(morgan("dev"));
 
-// Home Route
+// =========================================================
+// WEB ROUTES
+// =========================================================
+
+// Home Page
+
 app.get("/", (req, res) => {
-    res.json({
-        success: true,
-        message: "E-Commerce Platform API is Running"
-    });
+
+    res.render("home");
+
 });
 
-// Start Server
+// =========================================================
+// API ROUTES
+// =========================================================
+
+app.use("/api", productRoutes);
+
+// =========================================================
+// 404 ROUTE
+// =========================================================
+
+app.use((req, res) => {
+
+    res.status(404).render("404", {
+        title: "Page Not Found"
+    });
+
+});
+
+// =========================================================
+// START SERVER
+// =========================================================
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+
+    console.log("==============================================");
+
+    console.log("🚀 E-Commerce Platform Started Successfully");
+
+    console.log(`🌐 Server : http://localhost:${PORT}`);
+
+    console.log("==============================================");
+
 });
