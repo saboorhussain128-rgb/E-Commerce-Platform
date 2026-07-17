@@ -31,6 +31,7 @@ const connectDB = require("./config/db");
 // =========================================================
 
 const productRoutes = require("./routes/productRoutes");
+const productController = require("./controllers/productController");
 
 // =========================================================
 // CREATE EXPRESS APPLICATION
@@ -83,11 +84,10 @@ app.use(morgan("dev"));
 
 // Home Page
 
-app.get("/", (req, res) => {
-
-    res.render("home");
-
-});
+app.get(
+    "/",
+    productController.showHomePage
+);
 
 // =========================================================
 // API ROUTES
