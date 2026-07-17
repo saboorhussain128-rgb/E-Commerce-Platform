@@ -1,0 +1,43 @@
+<div class="product-card">
+
+    <div class="product-image">
+
+        <img
+            src="<%= product.image %>"
+            alt="<%= product.title %>"
+        >
+
+    </div>
+
+    <div class="product-info">
+
+        <h3>
+
+            <%= product.title %>
+
+        </h3>
+
+        <p class="price">
+
+            $<%= product.price %>
+
+        </p>
+
+        <p class="rating">
+
+            ⭐ <%= product.rating.rate %>
+
+        </p>
+
+        <button
+            class="add-cart-btn"
+            data-id="<%= product.id %>"
+        >
+
+            Add To Cart
+
+        </button>
+
+    </div>
+
+</div>
