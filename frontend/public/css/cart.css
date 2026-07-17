@@ -1,0 +1,151 @@
+/*
+=========================================================
+SHOPPING CART SIDEBAR
+=========================================================
+*/
+
+.cart-sidebar {
+
+    background: #ffffff;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+    position: sticky;
+
+    top: 20px;
+
+}
+
+/* =========================================================
+   CART TITLE
+========================================================= */
+
+.cart-sidebar h2 {
+
+    font-size: 24px;
+
+    margin-bottom: 20px;
+
+    color: #222;
+
+}
+
+/* =========================================================
+   CART ITEMS
+========================================================= */
+
+#cartItems {
+
+    min-height: 250px;
+
+}
+
+#cartItems p {
+
+    color: #777;
+
+    text-align: center;
+
+    margin-top: 60px;
+
+}
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.cart-sidebar hr {
+
+    margin: 20px 0;
+
+    border: none;
+
+    border-top: 1px solid #ddd;
+
+}
+
+/* =========================================================
+   SUBTOTAL
+========================================================= */
+
+.subtotal {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+}
+
+.subtotal h3 {
+
+    font-size: 20px;
+
+    color: #333;
+
+}
+
+#subtotal {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #2c3e50;
+
+}
+
+/* =========================================================
+   CHECKOUT BUTTON
+========================================================= */
+
+#checkoutBtn {
+
+    width: 100%;
+
+    padding: 15px;
+
+    background: #2d89ef;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+#checkoutBtn:hover {
+
+    background: #1f6fd1;
+
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width:768px){
+
+    .cart-sidebar{
+
+        margin-top:30px;
+
+    }
+
+}

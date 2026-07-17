@@ -2,30 +2,24 @@
 
 <%- include("partials/navbar") %>
 
-<main>
+<div class="main-container">
 
-    <section class="hero">
+    <div class="products-section">
 
-        <h1>
+        <h2>
 
-            Welcome to ShopEase
+            Featured Products
 
-        </h1>
+        </h2>
 
-        <p>
+        <div id="productsContainer">
 
-            Discover the latest products at the best prices.
+        </div>
 
-        </p>
+    </div>
 
-    </section>
+    <%- include("partials/cartSidebar") %>
 
-    <section id="products">
-
-        <!-- Product cards will be displayed here -->
-
-    </section>
-
-</main>
+</div>
 
 <%- include("partials/footer") %>
