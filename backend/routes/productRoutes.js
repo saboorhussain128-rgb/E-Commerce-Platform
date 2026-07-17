@@ -10,15 +10,20 @@ const router = express.Router();
 
 const productController = require("../controllers/productController");
 
-/*
-=========================================================
-GET PRODUCTS
-=========================================================
-*/
+router.get(
+
+    "/",
+
+    productController.showHomePage
+
+);
 
 router.get(
+
     "/products",
+
     productController.getAllProducts
+
 );
 
 module.exports = router;
