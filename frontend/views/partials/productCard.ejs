@@ -13,28 +13,47 @@ PRODUCT CARD
 
     </div>
 
-    <div class="product-info">
+    <div class="product-content">
 
-        <h3><%= product.title %></h3>
+        <span class="category">
 
-        <div class="product-rating">
+            <%= product.category %>
+
+        </span>
+
+        <h3 class="title">
+
+            <%= product.title %>
+
+        </h3>
+
+        <div class="rating">
 
             ⭐ <%= product.rating.rate %>
-            (<%= product.rating.count %> Reviews)
+
+            <small>
+
+                (<%= product.rating.count %> Reviews)
+
+            </small>
 
         </div>
 
-        <div class="product-price">
+        <div class="price">
 
-            $<%= product.price %>
+            $<%= product.price.toFixed(2) %>
 
         </div>
 
         <button
             class="add-cart-btn"
+
             data-id="<%= product.id %>"
+
             data-title="<%= product.title %>"
+
             data-price="<%= product.price %>"
+
             data-image="<%= product.image %>"
         >
 
