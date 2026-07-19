@@ -77,10 +77,18 @@ UPDATE CART UI
 =========================================================
 */
 
+/*
+=========================================================
+UPDATE CART UI
+=========================================================
+*/
+
 function updateCartUI() {
 
     const cartItems = document.getElementById("cartItems");
+
     const subtotal = document.getElementById("subtotal");
+
     const cartCount = document.getElementById("cartCount");
 
     if (!cartItems) return;
@@ -90,12 +98,17 @@ function updateCartUI() {
     if (cart.length === 0) {
 
         cartItems.innerHTML = `
+
             <div class="empty-cart">
+
                 <p>Your cart is empty.</p>
+
             </div>
+
         `;
 
         subtotal.textContent = "$0.00";
+
         cartCount.textContent = "0";
 
         return;
@@ -103,35 +116,72 @@ function updateCartUI() {
     }
 
     let total = 0;
-    let totalQty = 0;
 
-    cart.forEach(item => {
+    let totalItems = 0;
 
-        total += item.price * item.quantity;
-        totalQty += item.quantity;
+    cart.forEach(product => {
+
+        total += product.price * product.quantity;
+
+        totalItems += product.quantity;
 
         cartItems.innerHTML += `
-            <div class="cart-item">
 
-                <img src="${item.image}" width="60">
+        <div class="cart-item">
 
-                <div>
+            <img
+                src="${product.image}"
+                alt="${product.title}"
+            >
 
-                    <h4>${item.title}</h4>
+            <div class="cart-info">
 
-                    <p>$${item.price}</p>
+                <h4>${product.title}</h4>
 
-                    <p>Qty : ${item.quantity}</p>
+                <p>$${product.price.toFixed(2)}</p>
+
+                <div class="cart-controls">
+
+                    <button onclick="decreaseQuantity(${product.id})">
+
+                        −
+
+                    </button>
+
+                    <span>
+
+                        ${product.quantity}
+
+                    </span>
+
+                    <button onclick="increaseQuantity(${product.id})">
+
+                        +
+
+                    </button>
 
                 </div>
 
             </div>
+
+            <button
+                class="remove-btn"
+                onclick="removeItem(${product.id})"
+            >
+
+                🗑
+
+            </button>
+
+        </div>
+
         `;
 
     });
 
     subtotal.textContent = "$" + total.toFixed(2);
-    cartCount.textContent = totalQty;
+
+    cartCount.textContent = totalItems;
 
 }
 

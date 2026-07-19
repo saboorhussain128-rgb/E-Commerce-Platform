@@ -82,17 +82,115 @@ CART HEADER
 
 /*
 =========================================================
-CART ITEMS
+CART ITEM
 =========================================================
 */
 
-.cart-items{
+.cart-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.cart-item img{
+
+    width:70px;
+
+    height:70px;
+
+    object-fit:contain;
+
+}
+
+.cart-info{
 
     flex:1;
 
-    overflow-y:auto;
+}
 
-    padding-right:10px;
+.cart-info h4{
+
+    font-size:15px;
+
+    margin-bottom:8px;
+
+    color:#333;
+
+}
+
+.cart-info p{
+
+    margin-bottom:10px;
+
+    color:#2d89ef;
+
+    font-weight:bold;
+
+}
+
+.cart-controls{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.cart-controls button{
+
+    width:30px;
+
+    height:30px;
+
+    border:none;
+
+    background:#2d89ef;
+
+    color:white;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+
+.cart-controls span{
+
+    font-weight:bold;
+
+    min-width:20px;
+
+    text-align:center;
+
+}
+
+.remove-btn{
+
+    background:none;
+
+    border:none;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+.remove-btn:hover{
+
+    transform:scale(1.1);
 
 }
 
