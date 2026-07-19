@@ -4,16 +4,30 @@ PRODUCT CARD
 
 <div class="product-card">
 
+    <!-- =====================================================
+         PRODUCT IMAGE
+    ====================================================== -->
+
     <div class="product-image">
 
-        <img
-            src="<%= product.image %>"
-            alt="<%= product.title %>"
-        >
+        <a href="/product/<%= product.id %>">
+
+            <img
+                src="<%= product.image %>"
+                alt="<%= product.title %>"
+            >
+
+        </a>
 
     </div>
 
+    <!-- =====================================================
+         PRODUCT CONTENT
+    ====================================================== -->
+
     <div class="product-content">
+
+        <!-- Category -->
 
         <span class="category">
 
@@ -21,17 +35,27 @@ PRODUCT CARD
 
         </span>
 
+        <!-- Product Title -->
+
         <h3 class="title">
 
-            <%= product.title %>
+            <a href="/product/<%= product.id %>">
+
+                <%= product.title %>
+
+            </a>
 
         </h3>
+
+        <!-- Description -->
 
         <p class="description">
 
             <%= product.description.substring(0, 90) %>...
 
         </p>
+
+        <!-- Rating -->
 
         <div class="rating">
 
@@ -45,11 +69,15 @@ PRODUCT CARD
 
         </div>
 
+        <!-- Price -->
+
         <div class="price">
 
             $<%= product.price.toFixed(2) %>
 
         </div>
+
+        <!-- Add To Cart Button -->
 
         <button
 
