@@ -20,6 +20,8 @@ exports.showHomePage = async (req, res) => {
 
         res.render("home", {
 
+            title: "ShopEase",
+
             products
 
         });
@@ -28,7 +30,13 @@ exports.showHomePage = async (req, res) => {
 
     catch (error) {
 
-        res.status(500).send(error.message);
+        console.error(error);
+
+        res.status(500).render("404", {
+
+            title: "Server Error"
+
+        });
 
     }
 
@@ -36,7 +44,8 @@ exports.showHomePage = async (req, res) => {
 
 /*
 =========================================================
-GET PRODUCTS API
+GET ALL PRODUCTS
+API
 =========================================================
 */
 
@@ -46,7 +55,7 @@ exports.getAllProducts = async (req, res) => {
 
         const products = await productService.getProducts();
 
-        res.json({
+        res.status(200).json({
 
             success: true,
 
@@ -88,7 +97,7 @@ exports.getProduct = async (req, res) => {
 
         );
 
-        res.json({
+        res.status(200).json({
 
             success: true,
 
