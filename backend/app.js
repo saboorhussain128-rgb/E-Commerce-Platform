@@ -27,11 +27,17 @@ const path = require("path");
 const connectDB = require("./config/db");
 
 // =========================================================
+// IMPORT CONTROLLERS
+// =========================================================
+
+const productController = require("./controllers/productController");
+
+// =========================================================
 // IMPORT ROUTES
 // =========================================================
 
 const productRoutes = require("./routes/productRoutes");
-const productController = require("./controllers/productController");
+const orderRoutes = require("./routes/orderRoutes");
 
 // =========================================================
 // CREATE EXPRESS APPLICATION
@@ -93,16 +99,30 @@ app.get(
 // API ROUTES
 // =========================================================
 
-app.use("/api", productRoutes);
+// Product API
+
+app.use(
+    "/api",
+    productRoutes
+);
+
+// Order API
+
+app.use(
+    "/api",
+    orderRoutes
+);
 
 // =========================================================
-// 404 ROUTE
+// 404 PAGE
 // =========================================================
 
 app.use((req, res) => {
 
     res.status(404).render("404", {
+
         title: "Page Not Found"
+
     });
 
 });
@@ -115,12 +135,12 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
 
-    console.log("==============================================");
+    console.log("====================================================");
 
     console.log("🚀 E-Commerce Platform Started Successfully");
 
-    console.log(`🌐 Server : http://localhost:${PORT}`);
+    console.log(`🌐 Server Running : http://localhost:${PORT}`);
 
-    console.log("==============================================");
+    console.log("====================================================");
 
 });
