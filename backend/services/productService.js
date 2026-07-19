@@ -1,7 +1,6 @@
 /*
 =========================================================
 PRODUCT SERVICE
-Fetch Products from FakeStore API
 =========================================================
 */
 
@@ -14,25 +13,67 @@ GET ALL PRODUCTS
 */
 
 async function getProducts() {
+
     try {
+
         const response = await fetch(API_URL);
 
         if (!response.ok) {
-            throw new Error("Failed to fetch products");
+
+            throw new Error("Unable to fetch products.");
+
         }
 
-        const products = await response.json();
+        return await response.json();
 
-        return products;
+    }
 
-    } catch (error) {
+    catch (error) {
 
-        console.error("Error Fetching Products:", error.message);
+        console.error(error);
 
         throw error;
+
     }
+
+}
+
+/*
+=========================================================
+GET SINGLE PRODUCT
+=========================================================
+*/
+
+async function getProductById(id) {
+
+    try {
+
+        const response = await fetch(`${API_URL}/${id}`);
+
+        if (!response.ok) {
+
+            throw new Error("Product Not Found");
+
+        }
+
+        return await response.json();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        throw error;
+
+    }
+
 }
 
 module.exports = {
-    getProducts
+
+    getProducts,
+
+    getProductById
+
 };

@@ -6,13 +6,19 @@ PRODUCT CONTROLLER
 
 const productService = require("../services/productService");
 
+/*
+=========================================================
+HOME PAGE
+=========================================================
+*/
+
 exports.showHomePage = async (req, res) => {
 
-    try{
+    try {
 
         const products = await productService.getProducts();
 
-        res.render("home",{
+        res.render("home", {
 
             products
 
@@ -20,7 +26,7 @@ exports.showHomePage = async (req, res) => {
 
     }
 
-    catch(error){
+    catch (error) {
 
         res.status(500).send(error.message);
 
@@ -28,21 +34,77 @@ exports.showHomePage = async (req, res) => {
 
 };
 
-exports.getAllProducts = async (req,res)=>{
+/*
+=========================================================
+GET PRODUCTS API
+=========================================================
+*/
 
-    try{
+exports.getAllProducts = async (req, res) => {
+
+    try {
 
         const products = await productService.getProducts();
 
-        res.json(products);
+        res.json({
+
+            success: true,
+
+            total: products.length,
+
+            products
+
+        });
 
     }
 
-    catch(error){
+    catch (error) {
 
         res.status(500).json({
 
-            message:error.message
+            success: false,
+
+            message: error.message
+
+        });
+
+    }
+
+};
+
+/*
+=========================================================
+GET SINGLE PRODUCT
+=========================================================
+*/
+
+exports.getProduct = async (req, res) => {
+
+    try {
+
+        const product = await productService.getProductById(
+
+            req.params.id
+
+        );
+
+        res.json({
+
+            success: true,
+
+            product
+
+        });
+
+    }
+
+    catch (error) {
+
+        res.status(404).json({
+
+            success: false,
+
+            message: error.message
 
         });
 

@@ -12,17 +12,37 @@ const productController = require("../controllers/productController");
 
 /*
 =========================================================
-PRODUCT API ROUTES
+WEB ROUTE
 =========================================================
 */
 
-// Get All Products
+router.get(
+
+    "/",
+
+    productController.showHomePage
+
+);
+
+/*
+=========================================================
+API ROUTES
+=========================================================
+*/
 
 router.get(
 
     "/products",
 
     productController.getAllProducts
+
+);
+
+router.get(
+
+    "/products/:id",
+
+    productController.getProduct
 
 );
 
