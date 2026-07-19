@@ -44,8 +44,47 @@ exports.showHomePage = async (req, res) => {
 
 /*
 =========================================================
-GET ALL PRODUCTS
-API
+SHOW PRODUCT DETAILS PAGE
+=========================================================
+*/
+
+exports.showProductPage = async (req, res) => {
+
+    try {
+
+        const product = await productService.getProductById(
+
+            req.params.id
+
+        );
+
+        res.render("product", {
+
+            title: product.title,
+
+            product
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        res.status(404).render("404", {
+
+            title: "Product Not Found"
+
+        });
+
+    }
+
+};
+
+/*
+=========================================================
+GET ALL PRODUCTS API
 =========================================================
 */
 
@@ -83,7 +122,7 @@ exports.getAllProducts = async (req, res) => {
 
 /*
 =========================================================
-GET SINGLE PRODUCT
+GET SINGLE PRODUCT API
 =========================================================
 */
 

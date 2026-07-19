@@ -7,23 +7,46 @@ Backend Entry Point
 
 require("dotenv").config();
 
+/*
+=========================================================
+IMPORT PACKAGES
+=========================================================
+*/
+
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const path = require("path");
 
+/*
+=========================================================
+IMPORT DATABASE
+=========================================================
+*/
+
 const connectDB = require("./config/db");
 
-const productController = require("./controllers/productController");
+/*
+=========================================================
+IMPORT ROUTES
+=========================================================
+*/
 
+const webRoutes = require("./routes/webRoutes");
 const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
+
+/*
+=========================================================
+CREATE EXPRESS APPLICATION
+=========================================================
+*/
 
 const app = express();
 
 /*
 =========================================================
-DATABASE
+CONNECT DATABASE
 =========================================================
 */
 
@@ -47,7 +70,7 @@ app.set(
 
 /*
 =========================================================
-MIDDLEWARE
+GLOBAL MIDDLEWARE
 =========================================================
 */
 
@@ -55,11 +78,15 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use(express.urlencoded({
+app.use(
 
-    extended: true
+    express.urlencoded({
 
-}));
+        extended: true
+
+    })
+
+);
 
 app.use(morgan("dev"));
 
@@ -85,19 +112,21 @@ WEB ROUTES
 =========================================================
 */
 
-app.get(
+app.use(
 
     "/",
 
-    productController.showHomePage
+    webRoutes
 
 );
 
 /*
 =========================================================
-PRODUCT API
+API ROUTES
 =========================================================
 */
+
+// Product API
 
 app.use(
 
@@ -107,11 +136,7 @@ app.use(
 
 );
 
-/*
-=========================================================
-ORDER API
-=========================================================
-*/
+// Order API
 
 app.use(
 
@@ -131,7 +156,7 @@ app.use((req, res) => {
 
     res.status(404).render("404", {
 
-        title: "404"
+        title: "Page Not Found"
 
     });
 
@@ -139,7 +164,7 @@ app.use((req, res) => {
 
 /*
 =========================================================
-SERVER
+START SERVER
 =========================================================
 */
 
@@ -147,12 +172,12 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
 
-    console.log("==============================================");
+    console.log("====================================================");
 
     console.log("🚀 E-Commerce Platform Started Successfully");
 
-    console.log(`🌐 http://localhost:${PORT}`);
+    console.log(`🌐 Server Running : http://localhost:${PORT}`);
 
-    console.log("==============================================");
+    console.log("====================================================");
 
 });

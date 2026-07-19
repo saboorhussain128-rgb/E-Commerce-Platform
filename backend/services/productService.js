@@ -30,7 +30,7 @@ async function getProducts() {
 
     catch (error) {
 
-        console.error(error);
+        console.error("Product Service Error:", error.message);
 
         throw error;
 
@@ -62,7 +62,7 @@ async function getProductById(id) {
 
     catch (error) {
 
-        console.error(error);
+        console.error("Product Service Error:", error.message);
 
         throw error;
 
